@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowKeep — Privacy Policy</title>
+    <style>
+        :root {
+            --amber: #C97B2E;
+            --bg: #FDFAF6;
+            --text: #1C1A17;
+            --muted: #6B6560;
+            --border: #E8E2DA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--amber);
+        }
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        .summary {
+            background: #F5F0EA;
+            border-left: 3px solid var(--amber);
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        p { margin-bottom: 1rem; }
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        li { margin-bottom: 0.4rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            font-weight: 600;
+            background: #F5F0EA;
+        }
+        a { color: var(--amber); }
+        strong { font-weight: 600; }
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+        .contact {
+            background: #F5F0EA;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1C1A17;
+                --text: #F5F0EA;
+                --muted: #9B9590;
+                --border: #3A3530;
+            }
+            .summary, th, .contact { background: #2A2520; }
+        }
+    </style>
+</head>
+<body>
+    <h1>FlowKeep &mdash; Privacy Policy</h1>
+    <p class="meta">
+        Effective Date: February 12, 2026 &middot; Last Updated: June 20, 2026<br>
+        Developer: Legend Made (com.legend-made.FlowKeep)
+    </p>
+
+    <div class="summary">
+        FlowKeep does not sell your personal data, show ads, or run third-party analytics or tracking SDKs, and there are no user accounts to create. Your project data stays on your device and, if you choose, in your own iCloud account.<br><br>
+        The one exception is the <strong>optional</strong> Accountability Buddy feature: if &mdash; and only if &mdash; you choose to invite a partner, a small amount of invite data (a random code, the display name you enter, and an anonymous device identifier) is stored on a lightweight backend we operate so the invite can be delivered. This is described in detail in Section 7. If you never use the buddy feature, none of this data is created or transmitted.
+    </div>
+
+    <h2>1. Information We Collect</h2>
+    <p><strong>We do not collect any personal information.</strong></p>
+    <p>FlowKeep does not ask for your name, email address, phone number, location, or any other personally identifiable information. There is no account creation or login process.</p>
+
+    <h2>2. Data Stored on Your Device</h2>
+    <p>FlowKeep stores the following data locally on your device to provide app functionality:</p>
+    <table>
+        <thead><tr><th>Data</th><th>Purpose</th></tr></thead>
+        <tbody>
+            <tr><td>Project titles, descriptions, icons, and colors</td><td>Displaying and organizing your projects</td></tr>
+            <tr><td>Project notes and links</td><td>Context preservation &mdash; so you can pick up where you left off</td></tr>
+            <tr><td>Touch events (timestamps)</td><td>Calculating freshness, streaks, and queue priority</td></tr>
+            <tr><td>User preferences (capacity, ratios, thresholds)</td><td>Personalizing your experience</td></tr>
+            <tr><td>Notification settings and schedule</td><td>Delivering reminders you&rsquo;ve opted into</td></tr>
+            <tr><td>Project templates</td><td>Storing built-in and user-created templates</td></tr>
+            <tr><td>Project dependencies</td><td>Tracking prerequisites between projects</td></tr>
+        </tbody>
+    </table>
+    <p>All of this data is stored in a local database on your device using Apple&rsquo;s Core Data framework within the app&rsquo;s sandboxed container.</p>
+
+    <h2>3. iCloud Sync</h2>
+    <p>If you are signed into iCloud on your device, FlowKeep can automatically sync your data across your Apple devices (iPhone and iPad) using Apple&rsquo;s CloudKit service.</p>
+    <ul>
+        <li>Sync is handled entirely by Apple&rsquo;s infrastructure.</li>
+        <li>Data is encrypted in transit and at rest by Apple.</li>
+        <li>Your project data goes from your device to your iCloud account &mdash; nowhere else. (The only data FlowKeep ever sends to a server we operate is the optional buddy-invite record described in Section 7.)</li>
+        <li>If you are not signed into iCloud, your data remains on-device only.</li>
+    </ul>
+    <p>For details on how Apple handles iCloud data, see <a href="https://support.apple.com/en-us/HT202303">Apple&rsquo;s iCloud Privacy Overview</a>.</p>
+
+    <h2>4. Notifications</h2>
+    <p>FlowKeep may request permission to send you local notifications. These are used to:</p>
+    <ul>
+        <li>Remind you about projects approaching their freshness threshold.</li>
+        <li>Alert you when your queue needs attention.</li>
+    </ul>
+    <p>Notifications are <strong>optional</strong>. You can enable or disable them at any time in the app&rsquo;s settings or in iOS Settings. No notification data is sent to any external service.</p>
+
+    <h2>5. Widgets &amp; Siri Shortcuts</h2>
+    <p>FlowKeep provides Home Screen widgets, Lock Screen widgets, and Siri Shortcuts integration. These features:</p>
+    <ul>
+        <li>Read your project data from a shared on-device container (App Group) to display your queue.</li>
+        <li>Do not transmit any data externally.</li>
+        <li>Are processed entirely on your device.</li>
+    </ul>
+
+    <h2>6. Template Sharing</h2>
+    <p>FlowKeep allows you to share project templates via QR codes or links. When you share a template:</p>
+    <ul>
+        <li>The template data (title, description, structure) is encoded into the QR code or URL.</li>
+        <li>No data is uploaded to FlowKeep servers (we don&rsquo;t have any).</li>
+        <li>Shared template links may be hosted on <a href="https://flowkeep.github.io/">flowkeep.github.io</a> as static GitHub Pages content. No user data or analytics are collected through these pages.</li>
+    </ul>
+
+    <h2>7. Accountability Buddy (Optional)</h2>
+    <p>FlowKeep includes an <strong>optional</strong> Accountability Buddy feature that lets you connect with one partner so they can see your project <strong>titles</strong> and nudge you when a project goes stale. It is off until you choose to invite someone.</p>
+
+    <h3>What is shared, and how</h3>
+    <p><strong>Invite delivery (our backend).</strong> When you create an invite, FlowKeep stores a small invite record on a lightweight backend we operate (hosted on Supabase). That record contains:</p>
+    <ul>
+        <li>A random invite code.</li>
+        <li>The display name you enter for yourself.</li>
+        <li>An anonymous device identifier (Apple&rsquo;s <code>identifierForVendor</code>) &mdash; <strong>not</strong> your Apple ID, name, email, or phone number.</li>
+        <li>A CloudKit share link used to establish the connection.</li>
+        <li>The invite&rsquo;s status and timestamps.</li>
+    </ul>
+    <p>Invite records <strong>automatically expire after 14 days</strong>. This backend exists solely to deliver invites &mdash; it is never used for analytics, advertising, or profiling, and the data is never sold.</p>
+    <p><strong>The connection and ongoing sync (Apple CloudKit).</strong> Once a buddy accepts, the actual sharing &mdash; your project titles, freshness status, and nudges &mdash; runs through Apple&rsquo;s CloudKit/iCloud, not through our backend.</p>
+    <p><strong>What stays private.</strong> Only project <strong>titles</strong> and freshness status are visible to a connected buddy. Notes, links, descriptions, time estimates, dependencies, and all other details remain private to you.</p>
+    <p>If you never use the buddy feature, no invite record is created and nothing is transmitted to our backend.</p>
+
+    <h2>8. AI Features (Disabled)</h2>
+    <p>FlowKeep contains code for optional AI-powered features (project advice via third-party AI providers). <strong>These features are currently disabled</strong> and no API calls are made to any AI service.</p>
+    <ul>
+        <li>No data is sent to Anthropic, OpenAI, Google, or any other AI provider.</li>
+        <li>If AI features are enabled in a future update, any API keys would be stored securely in the iOS Keychain and never transmitted beyond the chosen AI provider&rsquo;s API.</li>
+        <li>This privacy policy will be updated before any AI features are enabled.</li>
+    </ul>
+
+    <h2>9. Analytics &amp; Tracking</h2>
+    <p><strong>FlowKeep does not use any third-party analytics or tracking services.</strong></p>
+    <ul>
+        <li>No Firebase, no Google Analytics, no Mixpanel, no Amplitude &mdash; nothing.</li>
+        <li>No advertising identifiers are accessed.</li>
+        <li>No user behavior data is transmitted off your device.</li>
+    </ul>
+    <p>FlowKeep maintains a minimal, privacy-safe local event log (last 100 events) stored entirely on your device for internal diagnostics. This log contains no personally identifiable information, is never transmitted anywhere, and is automatically pruned to the most recent 100 entries.</p>
+
+    <h2>10. Third-Party SDKs &amp; Services</h2>
+    <p><strong>FlowKeep bundles zero third-party SDKs.</strong> No external code from any third party runs inside the app. It is built entirely with native Apple frameworks: SwiftUI, Core Data, CloudKit, WidgetKit, UserNotifications, App Intents, Foundation, OSLog.</p>
+    <p><strong>One third-party service</strong> is used, and only for the optional buddy-invite feature in Section 7: <strong>Supabase</strong>, which hosts the backend that stores and delivers invite records. No Supabase code or SDK is embedded in the app &mdash; FlowKeep simply makes network requests to that backend when you create or accept a buddy invite. No project content, notes, or links are sent to it. See Supabase&rsquo;s privacy practices at <a href="https://supabase.com/privacy">supabase.com/privacy</a>.</p>
+
+    <h2>11. Data Retention &amp; Deletion</h2>
+    <ul>
+        <li>All your project data is stored on your device and in your iCloud account (if enabled).</li>
+        <li><strong>To delete all data:</strong> Delete the FlowKeep app from your device. This removes all locally stored data.</li>
+        <li><strong>To remove iCloud data:</strong> After deleting the app, you can manage iCloud storage through iOS Settings &gt; [Your Name] &gt; iCloud &gt; Manage Storage.</li>
+        <li><strong>Buddy invites:</strong> The only data FlowKeep keeps on a server it operates is the optional buddy-invite record (Section 7), which expires automatically after 14 days. To remove an invite sooner, revoke it from the app or contact us at the address below.</li>
+    </ul>
+
+    <h2>12. Children&rsquo;s Privacy</h2>
+    <p>FlowKeep does not knowingly collect any information from children under the age of 13. Since the app collects no personal information from any user, it is compliant with COPPA (Children&rsquo;s Online Privacy Protection Act).</p>
+
+    <h2>13. Privacy Nutrition Label (App Store)</h2>
+    <p>Based on the current implementation, FlowKeep&rsquo;s App Store privacy label states:</p>
+    <ul>
+        <li><strong>No tracking:</strong> FlowKeep does not track you across apps or websites, and uses no advertising identifiers.</li>
+        <li><strong>For users who never use the buddy feature:</strong> No data is collected.</li>
+        <li><strong>For users who use the optional Accountability Buddy feature:</strong> A minimal amount of data is collected solely to deliver invites and is <strong>not linked to your identity</strong> and <strong>not used to track you</strong>:
+            <ul>
+                <li><strong>Identifiers</strong> &mdash; an anonymous device identifier (<code>identifierForVendor</code>).</li>
+                <li><strong>User Content</strong> &mdash; the display name you enter and the project titles you choose to share with a buddy.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>14. Apple Privacy Manifest</h2>
+    <p>FlowKeep includes a <code>PrivacyInfo.xcprivacy</code> file declaring the following Apple-required API usages, all for app functionality only:</p>
+    <table>
+        <thead><tr><th>API</th><th>Reason</th></tr></thead>
+        <tbody>
+            <tr><td>UserDefaults (CA92.1)</td><td>Storing app preferences</td></tr>
+            <tr><td>File Timestamp (C617.1)</td><td>App functionality</td></tr>
+            <tr><td>System Boot Time (35F9.1)</td><td>App functionality</td></tr>
+            <tr><td>Disk Space (E174.1)</td><td>App functionality</td></tr>
+        </tbody>
+    </table>
+    <p><code>NSPrivacyTracking</code> is set to <code>false</code>.</p>
+
+    <h2>15. Changes to This Policy</h2>
+    <p>If we make changes to this privacy policy &mdash; particularly when the Accountability Buddy or AI features become fully implemented &mdash; we will update this document and the effective date at the top.</p>
+
+    <hr>
+
+    <div class="contact">
+        <h2 style="margin-top: 0;">16. Contact</h2>
+        <p>If you have questions about this privacy policy or FlowKeep&rsquo;s data practices, contact us at:</p>
+        <p><strong><a href="mailto:info@legend-made.com">info@legend-made.com</a></strong></p>
+    </div>
+</body>
+</html>
