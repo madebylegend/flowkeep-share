@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--
+  FlowKeep buddy-invite landing page (dark theme, matches index.html).
+
+  This is the source of truth in the app repo. The deployed copy lives in the
+  flowkeep.github.io repo. The universal link the app shares is
+  https://flowkeep.github.io/?invite=<CODE> — index.html redirects ?invite=<CODE>
+  here. AASA already matches "/" and "/*", so no Associated-Domain change is needed.
+
+  When the App Store listing goes live, update APP_STORE_URL here AND in index.html.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>FlowKeep — You've been invited</title>
+
+    <meta property="og:title" content="You've been invited to FlowKeep">
+    <meta property="og:description" content="Be accountability buddies on FlowKeep — keep each other's projects moving.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FlowKeep">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#1C1A17">
+
+    <style>
+        :root {
+            --bg: #1C1A17;
+            --surface: #24211D;
+            --primary: #FFFFFF;
+            --secondary: rgba(255, 255, 255, 0.5);
+            --separator: rgba(255, 255, 255, 0.08);
+            --accent: #D4893A;
+            --accent-fill: rgba(212, 137, 58, 0.2);
+            --terracotta: #D59367;
+            --periwinkle: #A5A8C0;
+            --sage: #789E96;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--primary);
+            padding: 24px 20px 40px;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            animation: fadeIn 0.45s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Brand lockup */
+        .lockup {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .logomark { position: relative; width: 40px; height: 22px; }
+        .logomark span { position: absolute; top: 0; width: 22px; height: 22px; border-radius: 50%; }
+        .logomark .c1 { left: 0; background: var(--terracotta); }
+        .logomark .c2 { left: 9px; background: var(--periwinkle); }
+        .logomark .c3 { left: 18px; background: var(--sage); }
+        .wordmark { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+
+        .intro {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 22px;
+            line-height: 1.3;
+        }
+
+        /* Invite card */
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--separator);
+            border-radius: 24px;
+            padding: 32px 26px 34px;
+            margin-bottom: 28px;
+        }
+
+        .card-circles { position: absolute; top: 0; right: 0; width: 200px; height: 200px; pointer-events: none; }
+        .card-circles span { position: absolute; border-radius: 50%; opacity: 0.06; }
+        .card-circles .b1 { width: 150px; height: 150px; top: -40px; right: -30px; background: var(--terracotta); }
+        .card-circles .b2 { width: 110px; height: 110px; top: 10px; right: 8px; background: var(--periwinkle); }
+        .card-circles .b3 { width: 80px; height: 80px; top: -10px; right: 40px; background: var(--sage); }
+
+        /* Paired avatars = "buddies" */
+        .avatars {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+        .avatar {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; font-weight: 700;
+            color: #1C1A17;
+            border: 3px solid var(--surface);
+        }
+        .avatar.them { background: var(--terracotta); }
+        .avatar.you { background: var(--sage); margin-left: -18px; }
+
+        .badge {
+            position: relative;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            background: var(--accent-fill);
+            padding: 5px 13px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+        }
+
+        .card-title {
+            position: relative;
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .card-sub {
+            position: relative;
+            font-size: 15px;
+            color: var(--secondary);
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 24px;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+        .button:active { transform: scale(0.98); }
+        .button-primary { background: var(--accent); color: #1C1A17; }
+        .button-secondary { background: transparent; color: var(--primary); border: 1px solid var(--separator); }
+
+        #status { font-size: 13px; color: var(--secondary); min-height: 18px; margin-bottom: 4px; }
+        .footer { margin-top: 28px; font-size: 13px; color: var(--secondary); }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="lockup">
+            <span class="logomark"><span class="c1"></span><span class="c2"></span><span class="c3"></span></span>
+            <span class="wordmark">FlowKeep</span>
+        </div>
+
+        <p class="intro" id="intro">You've been invited</p>
+
+        <div class="card">
+            <div class="card-circles"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+            <div class="avatars">
+                <div class="avatar them" id="avatarThem">★</div>
+                <div class="avatar you">＋</div>
+            </div>
+            <span class="badge">ACCOUNTABILITY BUDDY</span>
+            <div class="card-title" id="cardTitle">Loading your invite…</div>
+            <div class="card-sub" id="cardSub">Keep each other's projects moving on FlowKeep.</div>
+        </div>
+
+        <div class="actions">
+            <button class="button button-primary" id="openApp" onclick="attemptOpenApp()">Open in App</button>
+            <a class="button button-secondary" href="#" id="downloadLink">Download FlowKeep</a>
+        </div>
+
+        <p id="status"></p>
+
+        <div class="footer">Shared via FlowKeep</div>
+    </div>
+
+    <script>
+        // ---- CONFIG ----
+        const SUPABASE_URL = "https://utmjnaxmksofnjzukfth.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bWpuYXhta3NvZm5qenVrZnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5MDgzMjcsImV4cCI6MjA5NzQ4NDMyN30.CG4Ml7v1E6tg7QXfjizJhhXi9bNBvMLcvQZbJd7I6Xw";
+        // Search fallback until the App Store listing is live — update in index.html too.
+        const APP_STORE_URL = "https://apps.apple.com/search?term=FlowKeep";
+        // ----------------
+
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("invite");
+
+        const introEl = document.getElementById("intro");
+        const titleEl = document.getElementById("cardTitle");
+        const subEl = document.getElementById("cardSub");
+        const avatarThem = document.getElementById("avatarThem");
+        const openApp = document.getElementById("openApp");
+        const downloadLink = document.getElementById("downloadLink");
+        const statusEl = document.getElementById("status");
+
+        const appURL = code ? "flowkeep://invite?code=" + encodeURIComponent(code) : "flowkeep://";
+        downloadLink.href = APP_STORE_URL;
+
+        // Deferred deep link: stash the code so a fresh install can offer to accept on first launch.
+        downloadLink.addEventListener("click", function () {
+            try { navigator.clipboard.writeText("flowkeep-invite:" + code); } catch (_) {}
+        });
+
+        function initial(name) {
+            const t = (name || "").trim();
+            return t ? t[0].toUpperCase() : "★";
+        }
+
+        async function loadInvite() {
+            if (!code) {
+                introEl.textContent = "Invalid invite";
+                titleEl.textContent = "Missing invite code";
+                subEl.textContent = "This link is incomplete. Ask your buddy to resend it.";
+                openApp.classList.add("hidden");
+                return;
+            }
+            try {
+                const res = await fetch(
+                    SUPABASE_URL + "/functions/v1/get-invite?code=" + encodeURIComponent(code),
+                    { headers: { Authorization: "Bearer " + SUPABASE_ANON_KEY, apikey: SUPABASE_ANON_KEY } }
+                );
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "Invite not found");
+
+                const name = data.inviter_name || "A friend";
+                avatarThem.textContent = initial(name);
+
+                if (data.status === "expired") {
+                    introEl.textContent = "Invite expired";
+                    titleEl.textContent = name + "'s invite expired";
+                    subEl.textContent = "Ask " + name + " to send you a fresh invite.";
+                    openApp.classList.add("hidden");
+                } else if (data.status === "revoked") {
+                    introEl.textContent = "Invite cancelled";
+                    titleEl.textContent = name + " cancelled this invite";
+                    subEl.textContent = "Reach out to " + name + " if this was a mistake.";
+                    openApp.classList.add("hidden");
+                } else {
+                    introEl.textContent = name + " invited you";
+                    titleEl.textContent = "Be " + name + "'s buddy";
+                    subEl.textContent = "Keep each other's projects moving on FlowKeep.";
+                    // App installed? The universal link opens the app before this page loads.
+                    // If we're here, gently try the custom scheme too.
+                    attemptOpenApp(true);
+                }
+            } catch (e) {
+                introEl.textContent = "You've been invited";
+                titleEl.textContent = "Join your buddy on FlowKeep";
+                subEl.textContent = "Open FlowKeep to connect, or download it to get started.";
+            }
+        }
+
+        function attemptOpenApp(silent) {
+            if (!code) return;
+            window.location = appURL;
+            if (!silent) statusEl.textContent = "Opening FlowKeep…";
+            setTimeout(function () {
+                if (!document.hidden) {
+                    statusEl.textContent = "Don't have the app yet? Tap Download FlowKeep.";
+                }
+            }, 1800);
+        }
+
+        loadInvite();
+    </script>
+</body>
+</html>

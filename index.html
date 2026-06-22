@@ -184,6 +184,15 @@
     <script>
         // Parse template data from URL
         const urlParams = new URLSearchParams(window.location.search);
+
+        // Buddy-invite links share this same base URL (the universal link matches "/").
+        // Route them to the dedicated invite page before any template logic runs.
+        const inviteCode = urlParams.get('invite');
+        if (inviteCode) {
+            window.location.replace('invite.html?invite=' + encodeURIComponent(inviteCode));
+            throw new Error('redirecting to invite page'); // halt the template script
+        }
+
         const templateDataEncoded = urlParams.get('data');
         
         let templateData = null;
