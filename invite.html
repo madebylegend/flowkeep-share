@@ -268,9 +268,10 @@
                     introEl.textContent = name + " invited you";
                     titleEl.textContent = "Be " + name + "'s buddy";
                     subEl.textContent = "Keep each other's projects moving on FlowKeep.";
-                    // App installed? The universal link opens the app before this page loads.
-                    // If we're here, gently try the custom scheme too.
-                    attemptOpenApp(true);
+                    // Don't auto-redirect to the flowkeep:// scheme on load — on a phone
+                    // without the app that makes Safari error ("server can't be found")
+                    // before the page renders. Show the page; let the user tap "Open in App".
+                    statusEl.textContent = "Tap “Open in App” to accept, or join the beta below.";
                 }
             } catch (e) {
                 introEl.textContent = "You've been invited";
