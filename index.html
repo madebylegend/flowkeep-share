@@ -177,7 +177,8 @@
         
         <div class="footer">
             <p>Don't have FlowKeep?</p>
-            <a href="https://flowkeep.app" id="downloadLink">Download from App Store</a>
+            <!-- TODO(production): swap to the App Store listing URL when live. -->
+            <a href="https://testflight.apple.com/join/st8P1hDd" id="downloadLink">Join the FlowKeep Beta</a>
         </div>
     </div>
 
@@ -257,9 +258,10 @@
             setTimeout(function() {
                 // If still here, app probably isn't installed
                 document.getElementById('status').textContent = "FlowKeep is not installed";
-                document.getElementById('openApp').textContent = "Download FlowKeep";
+                document.getElementById('openApp').textContent = "Join the FlowKeep Beta";
                 document.getElementById('openApp').onclick = function() {
-                    window.location = 'https://apps.apple.com/app/flowkeep/YOUR_APP_ID';
+                    // TODO(production): swap to the App Store listing URL when live.
+                    window.location = 'https://testflight.apple.com/join/st8P1hDd';
                 };
             }, 2000);
         }

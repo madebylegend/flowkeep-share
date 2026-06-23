@@ -194,7 +194,7 @@
 
         <div class="actions">
             <button class="button button-primary" id="openApp" onclick="attemptOpenApp()">Open in App</button>
-            <a class="button button-secondary" href="#" id="downloadLink">Download FlowKeep</a>
+            <a class="button button-secondary" href="#" id="downloadLink">Join the FlowKeep Beta</a>
         </div>
 
         <p id="status"></p>
@@ -206,8 +206,9 @@
         // ---- CONFIG ----
         const SUPABASE_URL = "https://utmjnaxmksofnjzukfth.supabase.co";
         const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bWpuYXhta3NvZm5qenVrZnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5MDgzMjcsImV4cCI6MjA5NzQ4NDMyN30.CG4Ml7v1E6tg7QXfjizJhhXi9bNBvMLcvQZbJd7I6Xw";
-        // Search fallback until the App Store listing is live — update in index.html too.
-        const APP_STORE_URL = "https://apps.apple.com/search?term=FlowKeep";
+        // TODO(production): swap to the App Store listing URL when live — update in index.html too.
+        // TestFlight public beta for now (requires the TestFlight app).
+        const APP_STORE_URL = "https://testflight.apple.com/join/st8P1hDd";
         // ----------------
 
         const params = new URLSearchParams(window.location.search);
@@ -274,7 +275,7 @@
             } catch (e) {
                 introEl.textContent = "You've been invited";
                 titleEl.textContent = "Join your buddy on FlowKeep";
-                subEl.textContent = "Open FlowKeep to connect, or download it to get started.";
+                subEl.textContent = "Open FlowKeep to connect, or join the beta to get started.";
             }
         }
 
@@ -284,7 +285,7 @@
             if (!silent) statusEl.textContent = "Opening FlowKeep…";
             setTimeout(function () {
                 if (!document.hidden) {
-                    statusEl.textContent = "Don't have the app yet? Tap Download FlowKeep.";
+                    statusEl.textContent = "Don't have the app yet? Tap Join the FlowKeep Beta.";
                 }
             }, 1800);
         }
