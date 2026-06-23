@@ -170,10 +170,7 @@
             Open in FlowKeep
         </button>
         
-        <p id="status">
-            <span class="loader"></span>
-            Checking for FlowKeep...
-        </p>
+        <p id="status"></p>
         
         <div class="footer">
             <p>Don't have FlowKeep?</p>
@@ -241,11 +238,16 @@
         // Construct app URL
         const appURL = `flowkeep://template?data=${templateDataEncoded}`;
         
-        // Attempt to open app immediately on page load
+        // Do NOT auto-redirect to the flowkeep:// app scheme on load. On a phone
+        // where the app can't handle it, that forced jump makes Safari error
+        // ("server can't be found") before the page even renders. Show the page and
+        // let the user tap "Open in FlowKeep" instead.
         window.onload = function() {
-            attemptOpenApp();
+            document.getElementById('status').textContent = templateData
+                ? "Tap “Open in FlowKeep” to add this template."
+                : "";
         };
-        
+
         function attemptOpenApp() {
             // Try to open the app
             window.location = appURL;
