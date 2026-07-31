@@ -3,11 +3,12 @@
   FlowKeep buddy-invite landing page (dark theme, matches index.html).
 
   This is the source of truth in the app repo. The deployed copy lives in the
-  flowkeep.github.io repo. The universal link the app shares is
-  https://flowkeep.github.io/?invite=<CODE> — index.html redirects ?invite=<CODE>
-  here. AASA already matches "/" and "/*", so no Associated-Domain change is needed.
+  madebylegend.github.io repository. The universal link the app shares is
+  https://madebylegend.github.io/flowkeep-share/?invite=<CODE>. Its AASA file must
+  claim only this path when the invite query is present; legal and support pages stay web-only.
 
-  When the App Store listing goes live, update APP_STORE_URL here AND in index.html.
+  FlowKeep is live on the App Store — APP_STORE_URL below points to the listing.
+  Keep it in sync with index.html if it ever changes.
 -->
 <html lang="en">
 <head>
@@ -194,7 +195,7 @@
 
         <div class="actions">
             <button class="button button-primary" id="openApp" onclick="attemptOpenApp()">Open in App</button>
-            <a class="button button-secondary" href="#" id="downloadLink">Join the FlowKeep Beta</a>
+            <a class="button button-secondary" href="#" id="downloadLink">Download FlowKeep</a>
         </div>
 
         <p id="status"></p>
@@ -206,9 +207,8 @@
         // ---- CONFIG ----
         const SUPABASE_URL = "https://utmjnaxmksofnjzukfth.supabase.co";
         const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0bWpuYXhta3NvZm5qenVrZnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5MDgzMjcsImV4cCI6MjA5NzQ4NDMyN30.CG4Ml7v1E6tg7QXfjizJhhXi9bNBvMLcvQZbJd7I6Xw";
-        // TODO(production): swap to the App Store listing URL when live — update in index.html too.
-        // TestFlight public beta for now (requires the TestFlight app).
-        const APP_STORE_URL = "https://testflight.apple.com/join/st8P1hDd";
+        // FlowKeep App Store listing (keep in sync with index.html).
+        const APP_STORE_URL = "https://apps.apple.com/us/app/flowkeep/id6756529993";
         // ----------------
 
         const params = new URLSearchParams(window.location.search);
@@ -224,11 +224,6 @@
 
         const appURL = code ? "flowkeep://invite?code=" + encodeURIComponent(code) : "flowkeep://";
         downloadLink.href = APP_STORE_URL;
-
-        // Deferred deep link: stash the code so a fresh install can offer to accept on first launch.
-        downloadLink.addEventListener("click", function () {
-            try { navigator.clipboard.writeText("flowkeep-invite:" + code); } catch (_) {}
-        });
 
         function initial(name) {
             const t = (name || "").trim();
@@ -268,15 +263,14 @@
                     introEl.textContent = name + " invited you";
                     titleEl.textContent = "Be " + name + "'s buddy";
                     subEl.textContent = "Keep each other's projects moving on FlowKeep.";
-                    // Don't auto-redirect to the flowkeep:// scheme on load — on a phone
-                    // without the app that makes Safari error ("server can't be found")
-                    // before the page renders. Show the page; let the user tap "Open in App".
-                    statusEl.textContent = "Tap “Open in App” to accept, or join the beta below.";
+                    // Do not force the custom scheme on page load. If the app is absent,
+                    // Safari can otherwise replace this useful page with an error.
+                    statusEl.textContent = "Tap “Open in App” to accept, or download FlowKeep below.";
                 }
             } catch (e) {
                 introEl.textContent = "You've been invited";
                 titleEl.textContent = "Join your buddy on FlowKeep";
-                subEl.textContent = "Open FlowKeep to connect, or join the beta to get started.";
+                subEl.textContent = "Open FlowKeep to connect, or download it to get started.";
             }
         }
 
@@ -286,7 +280,7 @@
             if (!silent) statusEl.textContent = "Opening FlowKeep…";
             setTimeout(function () {
                 if (!document.hidden) {
-                    statusEl.textContent = "Don't have the app yet? Tap Join the FlowKeep Beta.";
+                    statusEl.textContent = "Don't have the app yet? Tap Download FlowKeep.";
                 }
             }, 1800);
         }
